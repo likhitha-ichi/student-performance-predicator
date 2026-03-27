@@ -1,6 +1,8 @@
-import pandas as pd
+ import pandas as pd
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error,r2_score
 
 # Sample dataset
 data = {
@@ -18,29 +20,57 @@ df = pd.DataFrame(data)
 X = df[['Hours', 'Sleep', 'Previous_Score', 'Attendance', 'Practice_Problems']]
 y = df['Marks']
 
-# Train model
+# Train test split
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state=42)
+
+#Train model
 model = LinearRegression()
-model.fit(X, y)
+model.fit(X_train,y_train)
 
+#Evaluation
+y_pred = model.predict(X_test)
+mae=mean_absolute_error(y_test,y_pred)
+r2 = r2_score(y_test,y_pred)
+print("mean Absolute Error:",mae)
+print("R2 score:",r2)
+
+#Feature importance
+
+print("\nFeature importance:")
+for i,col in enumerate(X.columns):
+  print(f"{col}:{model.coef_[i]:.2f}")
 # Prediction
-hours = float(input("Enter study hours: "))
-sleep = float(input("Enter sleep hours: "))
-prev = float(input("Enter previous score: "))
-att = float(input("Enter attendance (%): "))
-practice = float(input("Enter practice problems solved: "))
+try:
+    hours = float(input("Enter study hours: "))
+    sleep = float(input("Enter sleep hours: "))
+    prev = float(input("Enter previous score: "))
+    att = float(input("Enter attendance (%): "))
+    practice = float(input("Enter practice problems solved: "))
 
 
-input_data = pd.DataFrame([[hours, sleep, prev, att, practice]], 
+    input_data = pd.DataFrame([[hours, sleep, prev, att, practice]],
                           columns=['Hours', 'Sleep', 'Previous_Score', 'Attendance', 'Practice_Problems'])
 
-predicted_marks = model.predict(input_data)
+    predicted_marks = model.predict(input_data)
 
-print(f"Predicted Marks: {predicted_marks[0]:.2f}")
+    print(f"Predicted Marks: {predicted_marks[0]:.2f}")
+except:
+  print("invalid input.enter numbers only")
 
 # Plot
-plt.scatter(hours, predicted_marks[0], color='red')
-plt.plot(df['Hours'], model.predict(X))
-plt.xlabel("Hours Studied")
-plt.ylabel("Marks")
-plt.title("Hours vs Marks (Model View)")
+y_pred = model.predict(X)
+
+plt.scatter(df['Marks'], y_pred,color='red',label='predicted points')
+
+plt.plot([df['Marks'].min(), df['Marks'].max()],
+         [df['Marks'].min(), df['Marks'].max()],
+         linestyle='--',color='blue',label='perfect predicted line')
+
+plt.xlabel("Actual Marks")
+plt.ylabel("Predicted Marks")
+plt.title("Actual vs Predicted")
+for actual, pred in zip(df['Marks'], y_pred):
+    print(f"Actual: {actual}, Predicted: {pred}")
+
+plt.legend
 plt.show()

@@ -98,7 +98,7 @@ Interpretation:
 
 Student-Score-Prediction/
 │── README.md  
-│── student_prediction.py
+│──  main.py
 │── StudentsPerformance.csv
 
 ---

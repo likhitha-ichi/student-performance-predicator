@@ -98,8 +98,8 @@ Interpretation:
 
 Student-Score-Prediction/
 │── README.md  
+│──  StudentsPerformance.csv
 │──  main.py
-│── StudentsPerformance.csv
 
 ---
 

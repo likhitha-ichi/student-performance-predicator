@@ -1,75 +1,108 @@
-# student-performance-predicator
+ 🎯 Student Score Prediction using Machine Learning
 
-> A machine learning project that analyzes how student habits impact academic performance and predicts marks using regression techniques.
+📌 Overview
 
----
+This project builds a Linear Regression model to predict a student's math score based on their reading and writing scores.
 
-## 🔍 Overview
-This project predicts student academic performance based on multiple factors like study hours, sleep, previous scores, attendance, and practice.
-
-It uses **Multi-Linear Regression** to understand how these factors influence marks.
+The goal is to understand how different academic skills relate to each other using real-world data.
 
 ---
 
-## 🎯 Objective
-- Analyze student habits vs performance  
-- Build a prediction model  
-- Evaluate using proper ML metrics  
+📊 Dataset
+
+- Dataset: Students Performance Dataset
+- Features used:
+  - Reading Score
+  - Writing Score
+- Target:
+  - Math Score
 
 ---
 
-## 🧠 Features
-- Study Hours  
-- Sleep Duration  
-- Previous Scores  
-- Attendance  
-- Practice Problems  
+⚙️ Workflow
+
+1. Loaded dataset using Pandas
+2. Explored data using correlation heatmap
+3. Selected relevant features
+4. Split data into training and testing sets
+5. Trained a Linear Regression model
+6. Evaluated model performance
 
 ---
 
-## ⚙️ Tech Stack
-- Python  
-- Pandas  
-- Scikit-learn  
-- Matplotlib  
+📈 Model Evaluation
+
+- Mean Absolute Error (MAE) → Measures average prediction error
+- R² Score → Measures how well the model explains the data
+
+Interpretation:
+
+- Lower MAE = better accuracy
+- Higher R² = better model performance
 
 ---
 
-## 📈 Model Evaluation
-- MAE ≈ 2.4  
-- R² Score ≈ 0.98  
+📊 Visualizations
+
+- Feature correlation heatmap
+- Actual vs Predicted values plot
+- Error distribution plot
 
 ---
 
-## 📊 Visualization
-Used an Actual vs Predicted scatter plot to evaluate model performance.  
-Points closer to the diagonal line indicate better prediction accuracy.
+🔍 Key Insights
+
+- Reading and writing scores show strong correlation with math score
+- Writing score often has slightly higher influence on prediction
+- Model performs reasonably well but not perfect due to real-world data noise
 
 ---
 
-## 🧪 How to Run
-1. Clone the repository  
-2. Install dependencies  
-3. Run the notebook  
-4. Enter inputs to get predictions  
+🛠️ Tech Stack
+
+- Python
+- Pandas
+- Scikit-learn
+- Matplotlib
+- Seaborn
 
 ---
 
-## ⚠️ Limitations
-- Small dataset  
-- Not real-world data  
-- Assumes linear relationships  
+🚀 What I Learned
+
+- Difference between sample data and real-world datasets
+- Importance of matching features with dataset
+- How to evaluate a machine learning model properly
+- How small mistakes in data selection can break the model
 
 ---
 
-## 🔮 Future Improvements
-- Use real-world datasets  
-- Try advanced ML models (Random Forest, XGBoost)  
-- Deploy as a web application  
+⚠️ Limitations
+
+- Model is simple (Linear Regression)
+- Only 2 input features used
+- Does not capture complex relationships
 
 ---
 
-## 📌 Learning Outcome
-- Understood the complete ML workflow (data → training → evaluation → prediction)  
-- Learned importance of evaluation metrics like MAE and R²  
-- Gained practical experience with regression models
+🔥 Future Improvements
+
+- Use more features (e.g., gender, lunch, test preparation)
+- Try advanced models (Decision Tree, Random Forest)
+- Perform feature engineering
+- Save and deploy the model
+
+---
+
+📁 Project Structure
+
+Student-Score-Prediction/
+│── README.md  
+│── student_prediction.py
+│── StudentsPerformance.csv
+
+---
+
+👤 Author
+
+Beginner AIML student documenting learning journey 🚀
